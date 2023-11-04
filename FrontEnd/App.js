@@ -10,7 +10,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="SchedulerStack">
-        <Drawer.Screen name="SchedulerStack" component={SchedulerStack} />
+        <Drawer.Screen options={{
+          headerStyle: {
+            backgroundColor: '#88CF88',
+          },
+          headerTintColor: 'black',
+        }} name="SchedulerStack" component={SchedulerStack} />
         <Drawer.Screen name="HealthStack" component={HealthStack} options={{
           headerStyle: {
             backgroundColor: '#88CF88',
