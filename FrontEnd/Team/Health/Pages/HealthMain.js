@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import * as Progress from 'react-native-progress';
-
 // import { Pedometer } from 'expo-sensors';
 
-export default function HealthMain() {
+const HealthMain = ({ navigation }) => {
   const [goal, setGoal] = useState(0)
   const [step, setStep] = useState(0)
   const [user, setUser] = useState(null)
   return (
     <View style={styles.container}>
-      <View style={styles.card}>
-        <Text style={styles.headerText}>
+      <View style={styles.card} >
+        <Text style={styles.headerText} >
           Gauge for Healthy
         </Text>
         <Progress.Bar borderRadius={50} color={"#D2FF6E"} unfilledColor={"#F2FFD4"} progress={0.1} width={300} height={30} />
@@ -31,32 +30,24 @@ export default function HealthMain() {
         <View style={styles.row}>
           <View style={styles.card}>
             <Text style={styles.gridHeaderText}>
-              Steps
-            </Text>
-            <Text style={styles.subText}>
-              30000
-            </Text>
-          </View>
-          <View style={styles.card}>
-            <Text style={styles.gridHeaderText}>
               BMI
             </Text>
             <Text style={styles.subText}>
               18.5
             </Text>
           </View>
-
+          <View style={styles.card}>
+            <Text style={styles.gridHeaderText}>
+              Steps
+            </Text>
+            <Text style={styles.subText}>
+              30000
+            </Text>
+          </View>
         </View>
         <View style={styles.row}>
           <View style={styles.card}>
-            <Text style={styles.gridHeaderText}>
-              Age
-            </Text>
-            <Text style={styles.subText}>
-              20
-            </Text>
-          </View>
-          <View style={styles.card}>
+
             <Text style={styles.gridHeaderText}>
               Calories/day
             </Text>
@@ -64,7 +55,16 @@ export default function HealthMain() {
               3000
             </Text>
           </View>
+          <TouchableOpacity style={styles.card} onPress={() => {
+            navigation.navigate("Setting")
+          }}>
+            <Text style={styles.gridHeaderText}>
+              Setting
+            </Text>
+          </TouchableOpacity>
+
         </View>
+
       </View>
     </View>
   );
@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#93CFB5",
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: "column"
+    flexDirection: "column",
+
   },
   goalCard: {
     flex: 1,
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
   grid: {
     flex: 2,
     flexDirection: 'row',
-    gap: 10,
+    gap: 20,
     flexWrap: 'wrap',
   },
   row: {
@@ -103,10 +104,12 @@ const styles = StyleSheet.create({
   },
   card: {
     marginTop: 15,
+    justifyContent: "space-evenly",
     alignItems: "center",
     borderRadius: 50,
     backgroundColor: "#fff",
     flex: 1,
+
     width: "100%",
   },
   headerText: {
@@ -121,3 +124,4 @@ const styles = StyleSheet.create({
     fontSize: 20
   }
 });
+export default HealthMain
