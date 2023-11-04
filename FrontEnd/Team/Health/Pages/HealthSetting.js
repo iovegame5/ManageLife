@@ -3,12 +3,12 @@ import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list'
 
 const HealthSetting = () => {
-    const [goalSteps, setGoalSteps] = useState('');
-    const [age, setAge] = useState('');
-    const [weight, setWeight] = useState('');
-    const [height, setHeight] = useState('');
-    const [selected, setSelected] = useState("");
-
+    const [goalSteps, setGoalSteps] = useState(0);
+    const [age, setAge] = useState(0);
+    const [weight, setWeight] = useState(0);
+    const [height, setHeight] = useState(0);
+    const [selectedActivity, setSelectedActivity] = useState("");
+    
     const data = [
         { key: '1', value: 'Sedentary (little or no exercise)' },
         { key: '2', value: 'Lightly active (exercise 1–3 days/week)' },
@@ -53,20 +53,18 @@ const HealthSetting = () => {
                         width: "100%",
                         zIndex: 999,
                     }}
-                    setSelected={(val) => setSelected(val)}
+                    setSelected={(val) => setSelectedActivity(val)}
                     data={data}
                     save="value"
-
                     placeholder='How Active Are You?'
-
                 />
             </View>
             <Button
                 color="#000"
                 title="Save"
                 onPress={() => {
-                    // Handle saving the input values
-                    // You can use the values of goalSteps, age, weight, and height here
+                    // Spring boot
+                    // python
                 }}
             />
         </View>
