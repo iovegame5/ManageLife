@@ -34,7 +34,7 @@ public class AppointmentCommandController {
                 .appointmentDetail(model.getAppointmentDetail())
                 .appointmentTime(model.getAppointmentTime())
                 .build();
-        System.out.println("i'm working yu na");
+//        System.out.println("i'm working yu na");
 
         String result;
         try{
@@ -43,7 +43,7 @@ public class AppointmentCommandController {
         catch (Exception e){
             result = e.getLocalizedMessage();
         }
-        System.out.println("command: " + command+ " result: "+ result);
+//        System.out.println("command: " + command+ " result: "+ result);
         return  result;
 
     }

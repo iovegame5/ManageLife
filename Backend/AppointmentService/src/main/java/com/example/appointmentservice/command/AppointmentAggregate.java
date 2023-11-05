@@ -16,6 +16,8 @@ public class AppointmentAggregate {
     private String appointmentDetail;
     private String appointmentTime;
 
+    public AppointmentAggregate(){}
+
     @CommandHandler
     public AppointmentAggregate(CreateAppointmentCommand command){
         if(command.getAppointmentDetail().isBlank() || command.getAppointmentDetail() == null){

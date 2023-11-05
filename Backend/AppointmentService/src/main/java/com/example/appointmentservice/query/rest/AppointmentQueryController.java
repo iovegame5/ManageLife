@@ -3,9 +3,7 @@ package com.example.appointmentservice.query.rest;
 import com.example.appointmentservice.query.FindAppointmentQuery;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,9 +15,10 @@ public class AppointmentQueryController {
         this.queryGateway = queryGateway;
     }
 
-    @GetMapping
-    public List<AppointmentRestModel> getAppointments(){
-        FindAppointmentQuery findAppointmentQuery = new FindAppointmentQuery();
+    @GetMapping(value = "/{userId}")
+    public List<AppointmentRestModel> getAppointments(@PathVariable String userId){
+        System.out.println("userKub: "+userId);
+        FindAppointmentQuery findAppointmentQuery = new FindAppointmentQuery(userId);
         return queryGateway.query(
                 findAppointmentQuery,
                 ResponseTypes.multipleInstancesOf(AppointmentRestModel.class)
