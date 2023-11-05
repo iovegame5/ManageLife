@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 @app.route('/bmiCal', methods=["POST"])
 def bmiCalculator():
-    weight = float(request.form.get("w"))
-    heightcm = float(request.form.get("h"))
+    weight = float(request.args["w"])
+    heightcm = float(request.args["h"])
     height = heightcm/100
     out = weight / (height * height)
     level = ""
@@ -35,6 +35,5 @@ def bmiCalculator():
     res = jsonify({'out': out, 'level': level, 'w': weight, 'h': height })
     return res
 
-
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
