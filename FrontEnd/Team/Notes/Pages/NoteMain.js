@@ -37,7 +37,7 @@ const NoteMain = ({ navigation, route }) => {
                     <TouchableOpacity style={styles.note}
                         onPress={() => navigation.navigate('NoteDetail', { note: item })}
                     >
-                        <Text style={styles.noteTitle}> {item.date} </Text>
+                        <Text style={styles.noteTitle}>{item.date} </Text>
                             <Text style={styles.noteTitle}>{item.title}</Text>
                             <Text>{item.text}</Text>
                     </TouchableOpacity>

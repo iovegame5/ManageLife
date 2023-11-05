@@ -7,7 +7,7 @@ const NoteDetail = ({ navigation, route }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [noteId, setNoteId] = useState(null);
     const date = new Date();
-    const formattedDate = date.toLocaleString();
+    const formattedDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(date);
     useEffect(() => {
         if (route.params && route.params.note) {
             setIsEditing(true);
@@ -44,6 +44,8 @@ const NoteDetail = ({ navigation, route }) => {
                 onChangeText={(text) => setNoteTitle(text)}
             />
             <TextInput
+                multiline={true}
+                numberOfLines={5}
                 placeholder="Enter your note content"
                 value={noteText}
                 onChangeText={(text) => setNoteText(text)}
